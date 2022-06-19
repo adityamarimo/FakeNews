@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -32,12 +33,31 @@ android {
 }
 
 dependencies {
+    implementation(project(Modules.core))
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation(CoreLibs.kotlinStdlib)
+    implementation(CoreLibs.coreKtx)
+    // Koin
+    implementation(KoinLibs.koinCore)
+    implementation(KoinLibs.koinAndroid)
+
+    // Navigation Component
+    implementation(NavigationLibs.navigationFragmentKtx)
+    implementation(NavigationLibs.navigationUIKtx)
+
+    // OkHttp Interceptor
+    implementation(NetworkLibs.okhttp3Logging)
+
+    // Retrofit & Gson
+    implementation(NetworkLibs.retrofit)
+    implementation(NetworkLibs.gsonConverter)
+
+    // Kotlin Coroutines - Asynchronous
+    implementation(ReactiveLibs.coroutinesCore)
+    implementation(ReactiveLibs.coroutinesAndroid)
+
+    // Lifecycle Components
+    implementation(LifecycleLibs.lifecycleViewModel)
+    implementation(LifecycleLibs.lifecycleRuntime)
+    implementation(LifecycleLibs.lifecycleLiveData)
 }
